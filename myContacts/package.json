@@ -1,0 +1,22 @@
+{
+  "name": "kill-contacts",
+  "version": "1.0.0",
+  "description": "kill contacts manager",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/killsystem10/underdog_challenge_Node.js.git"
+  },
+  "author": "KILLSYSTEM10",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/killsystem10/underdog_challenge_Node.js/issues"
+  },
+  "homepage": "https://github.com/killsystem10/underdog_challenge_Node.js#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
