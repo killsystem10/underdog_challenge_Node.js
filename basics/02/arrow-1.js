@@ -6,3 +6,5 @@
 // };
 
 // 화살표 함수
+let hi = () => {return `안녕하신가`}
+console.log(hi());
