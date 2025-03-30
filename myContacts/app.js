@@ -26,6 +26,7 @@ app.delete("contacts/:id", (req,res) => {
 })
 */
 app.use("/contacts", require("./routes/contactRoutes"));
+app.use(express.urlencoded({ extended: true }));
 app.listen(3000, () => {
     console.log('server running');
 })
