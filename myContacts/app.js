@@ -1,13 +1,20 @@
 const express = require('express');
+const router = require("./routes/contactRoutes");
 const app = express();
+
+
 app.get("/", (req,res) => {
     res.send("hello killsystem10");
 })
-app.get("/contacts/:id", (req,res) => {
-    res.send("view Contact for ID :", req.params.id);
+/* app.get("/contacts/:id", (req,res) => {
+    res.send(`view contacts for id: ${req.params.id}`);
 })
+
+ */
+
+/*
 app.post("/contacts/:id", (req,res) => {
-    res.send('create contacts',req.params.id);
+    res.send(`create contacts for ID: ${req.params.id}`);
 })
 
 app.put("contacts/:id", (req,res) => {
@@ -17,7 +24,8 @@ app.put("contacts/:id", (req,res) => {
 app.delete("contacts/:id", (req,res) => {
     res.send(`Delete contact for ID : ${req.params.id}`);
 })
-
+*/
+app.use("/contacts", require("./routes/contactRoutes"));
 app.listen(3000, () => {
     console.log('server running');
 })
