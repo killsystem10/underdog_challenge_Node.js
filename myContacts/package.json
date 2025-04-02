@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/killsystem10/underdog_challenge_Node.js#readme",
   "dependencies": {
-    "express": "^4.21.2"
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.13.1",
+    "mongose": "^0.0.2-security"
   }
 }

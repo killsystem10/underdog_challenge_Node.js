@@ -1,7 +1,8 @@
 const express = require('express');
 const router = require("./routes/contactRoutes");
 const app = express();
-
+const dbConnect = require('./config/dbConnect');
+dbConnect();
 
 app.get("/", (req,res) => {
     res.send("hello killsystem10");
@@ -25,8 +26,7 @@ app.delete("contacts/:id", (req,res) => {
     res.send(`Delete contact for ID : ${req.params.id}`);
 })
 */
-app.use("/contacts", require("./routes/contactRoutes"));
-app.use(express.urlencoded({ extended: true }));
+app.use("/users", require("./routes/contactRoutes"));
 app.listen(3000, () => {
     console.log('server running');
 })
