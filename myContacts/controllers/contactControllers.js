@@ -1,11 +1,13 @@
 const asyncHandler = require("express-async-handler");
+const Contact = require("../models/contactModel");
 
 // @desc Get all contacts
 // @route GET /contacts
 
 const getAllContacts = asyncHandler(async (req, res) => {
     // 전체 연락처 보기
-    res.status(200).send("Contacts Page");
+    const contacts = await Contact.find();
+    res.status(200).send(contacts);
 });
 
 // @desc Create a contact
@@ -17,28 +19,48 @@ const createContact = asyncHandler(async (req, res) => {
     if (!name || !email || !phone) {
         return res.status(400).send("필수값이 입력되지 않았습니다.");
     }
-    res.status(201).send("Create Contacts");
+    const contact = await Contact.create({name,email,phone});
+    res.send("create contact");
 });
 
 // @desc Get contact
 // @route GET /contacts/:id
 const getContact = asyncHandler(async (req, res) => {
     // 연락처 상세 보기
-    res.status(200).send(`View Contact for ID: ${req.params.id}`);
+    const contact = await Contact.findById(req.params.id);
+    res.send(contact);
 });
 
 // @desc Update contact
 // @route PUT /contacts/:id
 const updateContact = asyncHandler(async (req, res) => {
     // 연락처 수정하기
-    res.status(200).send(`Update Contact for ID: ${req.params.id}`);
+    const id = req.params.id;
+    const {name,email,phone} = req.body;
+    const contact = await Contact.findById();
+    if (!contact) {
+        throw new Error("Contact not found");
+    }
+    contact.name = name;
+    contact.email = email;
+    contact.phone = phone;
+    contact.save();
+    res.json(contact);
 });
 
 // @desc Delete contact
 // @route DELETE /contacts/:id
 const deleteContact = asyncHandler(async (req, res) => {
     // 연락처 삭제하기
-    res.status(200).send(`Delete Contact for ID: ${req.params.id}`);
+    const id = req.params.id;
+
+    const contact = await Contact.findById();
+    if (!contact) {
+        throw new Error("Contact not found");
+    }
+    await Contact.deleteOne;
+    res.send("Deleted");
+
 });
 
 module.exports = {

@@ -1,32 +1,17 @@
-const express = require('express');
-const router = require("./routes/contactRoutes");
+const express = require("express");
+const dbConnect = require("./config/dbConnect");
+
 const app = express();
-const dbConnect = require('./config/dbConnect');
+
+const port = 3000;
+
 dbConnect();
 
-app.get("/", (req,res) => {
-    res.send("hello killsystem10");
-})
-/* app.get("/contacts/:id", (req,res) => {
-    res.send(`view contacts for id: ${req.params.id}`);
-})
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
- */
-
-/*
-app.post("/contacts/:id", (req,res) => {
-    res.send(`create contacts for ID: ${req.params.id}`);
-})
-
-app.put("contacts/:id", (req,res) => {
-    res.send(`Update contact for ID : ${req.params.id}`);
-})
-
-app.delete("contacts/:id", (req,res) => {
-    res.send(`Delete contact for ID : ${req.params.id}`);
-})
-*/
 app.use("/contacts", require("./routes/contactRoutes"));
-app.listen(3000, () => {
-    console.log('server running');
-})
+
+app.listen(port, () => {
+    console.log(`${port}번 포트에서 서버 실행 중`);
+});
