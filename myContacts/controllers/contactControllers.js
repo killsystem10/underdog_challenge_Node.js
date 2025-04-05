@@ -7,11 +7,7 @@ const Contact = require("../models/contactModel");
 const getAllContacts = asyncHandler(async (req, res) => {
     // 전체 연락처 보기
     const contacts = await Contact.find();
-    const users = [
-        {name : 'kim', email: 'kim@com',phone: '12345'},
-        {name : 'mi', email: 'mi@com',phone: '12345'}
-    ];
-    res.render("getAll", { users : users});
+    res.render('index', {contacts: contacts} );
 });
 
 // @desc Create a contact
