@@ -1,21 +1,28 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const contactSkima = new moogose.Schema({
-    name: {
-        type : String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: false
-    },
-    phone: {
-        type: String,
-        required: [true, "전화번호를 입력하여 주십시오"]
-    }
-},
+const contactSchema = new mongoose.Schema(
     {
-        timestamps: true
-    })
-const Contact = mongoose.model(['contact',contactSkima]);
-model.exports = Contact;
+        name: {
+            type: String,
+            required: true,
+        },
+        email: {
+            type: String,
+        },
+        phone: {
+            type: String,
+            required: [true, "전화번호는 꼭 기입해 주세요."],
+        },
+        office: {
+            type: String,
+        },
+    },
+    {
+        timestamps: true,
+    }
+);
+
+const Contact = mongoose.model("Contact", contactSchema);
+module.exports = Contact;
+
+// module.exports = mongoose.model("Contact", contactSchema);

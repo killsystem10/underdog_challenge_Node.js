@@ -26,7 +26,7 @@ app.delete("contacts/:id", (req,res) => {
     res.send(`Delete contact for ID : ${req.params.id}`);
 })
 */
-app.use("/users", require("./routes/contactRoutes"));
+app.use("/contacts", require("./routes/contactRoutes"));
 app.listen(3000, () => {
     console.log('server running');
 })
