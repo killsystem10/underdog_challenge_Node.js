@@ -4,7 +4,7 @@ const {
   getLogin,
   loginUser,
   logout,
-} = require("../controllers/loginController");
+} = require("../controllers/loginController.js");
 
 router.route("/").get(getLogin).post(loginUser);
 router.route("/logout").get(logout);

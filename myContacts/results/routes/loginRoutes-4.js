@@ -5,7 +5,7 @@ const {
   // registerUser,
   getLogin,
   loginUser,
-} = require("../controllers/loginController");
+} = require("../controllers/loginController.js");
 
 router.route("/").get(getLogin).post(loginUser);
 // router.route("/register").get(getRegister).post(registerUser);

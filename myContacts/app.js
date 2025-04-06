@@ -1,6 +1,8 @@
 const express = require("express");
 const dbConnect = require("./config/dbConnect");
 const methodOverride = require("method-override");
+const ejsLint = require('ejs-Lint');
+
 
 const app = express();
 
@@ -17,6 +19,7 @@ dbConnect();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/", require("./routes/loginRoutes"))
 app.use("/contacts", require("./routes/contactRoutes"));
 
 app.listen(port, () => {
