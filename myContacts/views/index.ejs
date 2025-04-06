@@ -22,12 +22,12 @@
             <td> <%= contacts.email%></td>
             <td> <%= contacts.phone %></td>
             <td>
-                <a href="#" class='bin update' title='수정'>
+                <a href="/contacts/<%= contacts._id%>" class='bin update' title='수정'>
                 <i class="fas fa-pencil-alt"></i>
                     </a>
-                <a herf = '#' class = 'bin delete' title="삭제">
-                    <i class="fas fa-trash-alt"></i>
-                </a>
+                <form action="/contacts/<%= contacts._id%>?_method=DELETE" method="POST" style="display: inline;">
+                <input type="sumbit" class="bin-update" title="삭제" value="X">
+                </form>
             </td>
         </tr>
         <% }) %>

@@ -24,7 +24,7 @@ const createContact = asyncHandler(async (req, res) => {
         return res.status(400).send("필수값이 입력되지 않았습니다.");
     }
     const contact = await Contact.create({name,email,phone});
-    res.send("create contact");
+    res.redirect("/contacts");
 });
 
 // @desc Get contact
@@ -32,7 +32,7 @@ const createContact = asyncHandler(async (req, res) => {
 const getContact = asyncHandler(async (req, res) => {
     // 연락처 상세 보기
     const contact = await Contact.findById(req.params.id);
-    res.send(contact);
+    res.render('update', {contact: contact});
 });
 
 // @desc Update contact
@@ -41,7 +41,7 @@ const updateContact = asyncHandler(async (req, res) => {
     // 연락처 수정하기
     const id = req.params.id;
     const {name,email,phone} = req.body;
-    const contact = await Contact.findById();
+    const contact = await Contact.findById(id);
     if (!contact) {
         throw new Error("Contact not found");
     }
@@ -49,7 +49,7 @@ const updateContact = asyncHandler(async (req, res) => {
     contact.email = email;
     contact.phone = phone;
     contact.save();
-    res.json(contact);
+    res.redirect(`/contacts`);
 });
 
 // @desc Delete contact
@@ -57,13 +57,8 @@ const updateContact = asyncHandler(async (req, res) => {
 const deleteContact = asyncHandler(async (req, res) => {
     // 연락처 삭제하기
     const id = req.params.id;
-
-    const contact = await Contact.findById();
-    if (!contact) {
-        throw new Error("Contact not found");
-    }
-    await Contact.deleteOne;
-    res.send("Deleted");
+    await Contact.findByIdAndDelete(id);
+    res.redirect(`/contacts`);
 
 });
 
