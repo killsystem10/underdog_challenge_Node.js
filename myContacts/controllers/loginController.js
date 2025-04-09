@@ -4,7 +4,7 @@ const  getlogin = (req,res) => {
     res.render("home");
 }
 
-const Loginuser = asyncHandler((req,res) => {
+ const Loginuser = asyncHandler((req,res) => {
     const {username, password} = req.body;
     if (username === 'admin' && password === '12345678') {
         res.send("Login Success");
@@ -12,5 +12,5 @@ const Loginuser = asyncHandler((req,res) => {
         res.send("Login Failed");
     }
 })
-module.exports = getlogin;
-module.exports = Loginuser;
+module.exports = { getlogin, Loginuser};
+// module.exports = Loginuser;
