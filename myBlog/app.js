@@ -9,6 +9,7 @@ const port = process.env.PORT || 3000;
 connectDB();
 app.use(expressLayouts);
 app.use('/',require('./routes/main'));
+app.use('/',require('./routes/admin'));
 app.set('view engine','ejs');
 app.set('views','./views');
 
